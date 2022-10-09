@@ -4,7 +4,7 @@
   <GroupId>FpsUnlocker</GroupId>
   <FriendlyName>Fps Unlocker</FriendlyName>
   <Author>Ritaelyn</Author>
-  <Commit>00c8e56fe75761017c5a331333e44398754bebcf</Commit>
+  <Commit>8b7448b34eb4b68be20b3e540eedb056abb6666e</Commit>
   <SourceDirectories>
     <Directory>Shared</Directory>
     <Directory>ClientPlugin</Directory>

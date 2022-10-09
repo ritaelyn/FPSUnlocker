@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <PluginData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="GitHubPlugin">
-  <Id>TODO: github-user/project-name</Id>
-  <GroupId>TODO: github-user/project-name</GroupId>
-  <FriendlyName>FpsUnlocker</FriendlyName>
+  <Id>ritaelyn/FPSUnlocker</Id>
+  <GroupId>FpsUnlocker</GroupId>
+  <FriendlyName>Fps Unlocker</FriendlyName>
   <Author>Ritaelyn</Author>
   <Commit>TODO: Git commit hash</Commit>
   <SourceDirectories>

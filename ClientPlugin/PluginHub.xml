@@ -4,7 +4,7 @@
   <GroupId>FpsUnlocker</GroupId>
   <FriendlyName>Fps Unlocker</FriendlyName>
   <Author>Ritaelyn</Author>
-  <Commit>TODO: Git commit hash</Commit>
+  <Commit>00c8e56fe75761017c5a331333e44398754bebcf</Commit>
   <SourceDirectories>
     <Directory>Shared</Directory>
     <Directory>ClientPlugin</Directory>

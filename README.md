@@ -1,4 +1,7 @@
-# Space Engineers Plugin Template
+# Space Engineers FPS Unlocker
+
+This plugin lets you adjust the framerate cap in Space Engineers from a value of 60 fps to 500 fps. By default it is set to 500 fps. 
+
 
 ## Prerequisites
 

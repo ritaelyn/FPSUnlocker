@@ -1,21 +1,25 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 using ClientPlugin.GUI;
 using HarmonyLib;
+using Sandbox;
 using Sandbox.Graphics.GUI;
 using Shared.Config;
 using Shared.Logging;
 using Shared.Patches;
 using Shared.Plugin;
 using VRage.FileSystem;
+using VRage.Library.Utils;
 using VRage.Plugins;
+using VRageRender.ExternalApp;
 
 namespace ClientPlugin
 {
     // ReSharper disable once UnusedType.Global
     public class Plugin : IPlugin, ICommonPlugin
     {
-        public const string Name = "PluginTemplate";
+        public const string Name = "FpsUnlocker";
         public static Plugin Instance { get; private set; }
 
         public long Tick { get; private set; }
@@ -48,8 +52,23 @@ namespace ClientPlugin
                 return;
             }
 
+            
+
             Log.Debug("Successfully loaded");
+
+            ChangeFramerateCap();
         }
+
+        public void ChangeFramerateCap()
+        {
+            var frameRateCap = config.Data.FramerateCap;
+
+            MyRenderThread renderThread = MySandboxGame.Static.GameRenderComponent.RenderThread;
+            FieldInfo field = renderThread.GetType().GetField("m_waiter", BindingFlags.Instance | BindingFlags.NonPublic);
+            FieldInfo field2 = renderThread.GetType().GetField("m_timer", BindingFlags.Instance | BindingFlags.NonPublic);
+            field.SetValue(renderThread, new WaitForTargetFrameRate((MyGameTimer)field2.GetValue(renderThread), frameRateCap));
+        }
+    
 
         public void Dispose()
         {
@@ -68,20 +87,6 @@ namespace ClientPlugin
 
         public void Update()
         {
-            EnsureInitialized();
-            try
-            {
-                if (!failed)
-                {
-                    CustomUpdate();
-                    Tick++;
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.Critical(ex, "Update failed");
-                failed = true;
-            }
         }
 
         private void EnsureInitialized()

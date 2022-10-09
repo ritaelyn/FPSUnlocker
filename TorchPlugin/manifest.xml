@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <PluginManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <Name>PluginTemplate</Name>
-  <Guid>c889318f-9835-4814-b26e-979242caeb0c</Guid>
-  <Repository>PluginTemplate</Repository>
+  <Name>FpsUnlocker</Name>
+  <Guid>3fbc4176-94ba-4a7c-b84b-c2ce58e9e090</Guid>
+  <Repository>FpsUnlocker</Repository>
   <Version>v1.0.0</Version>
 </PluginManifest>

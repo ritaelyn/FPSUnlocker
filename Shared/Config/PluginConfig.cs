@@ -30,6 +30,7 @@ namespace Shared.Config
         }
 
         private bool enabled = true;
+        private int framerateCap = 500;
         // TODO: Implement your config fields
 
         public bool Enabled
@@ -39,6 +40,11 @@ namespace Shared.Config
         }
 
         // TODO: Encapsulate them as properties
+        public int FramerateCap
+        {
+            get => framerateCap;
+            set => SetValue(ref framerateCap, value);
+        }
     }
 }
 

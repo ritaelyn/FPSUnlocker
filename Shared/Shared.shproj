@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup Label="Globals">
-        <ProjectGuid>{C5784FE0-CF0A-4870-9DEF-7BEA8B64C01A}</ProjectGuid>
+        <ProjectGuid>{6C4A1528-C2DF-43EC-9E0E-0C0AC457C239}</ProjectGuid>
         <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
         <RootNamespace>Shared</RootNamespace>
     </PropertyGroup>

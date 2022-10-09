@@ -8,5 +8,6 @@ namespace Shared.Config
         bool Enabled { get; set; }
 
         // TODO: Add config properties here, then extend the implementing classes accordingly
+        int FramerateCap { get; set; }
     }
 }

@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PluginTemplate")]
+[assembly: AssemblyTitle("FpsUnlocker")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("PluginTemplate")]
+[assembly: AssemblyProduct("FpsUnlocker")]
 [assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("FFB7FCA3-B168-43F4-8DBF-6247C0D331C8")]
+[assembly: Guid("BBCDF351-E18E-4ECA-8BEC-AB6107485AC4")]
 
 // Version information for an assembly consists of the following four values:
 //

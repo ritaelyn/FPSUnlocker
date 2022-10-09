@@ -4,11 +4,11 @@
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <ProjectGuid>{FFB7FCA3-B168-43F4-8DBF-6247C0D331C8}</ProjectGuid>
+        <ProjectGuid>{BBCDF351-E18E-4ECA-8BEC-AB6107485AC4}</ProjectGuid>
         <OutputType>Library</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
         <RootNamespace>DedicatedPlugin</RootNamespace>
-        <AssemblyName>PluginTemplate</AssemblyName>
+        <AssemblyName>FpsUnlocker</AssemblyName>
         <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
         <LangVersion>latest</LangVersion>

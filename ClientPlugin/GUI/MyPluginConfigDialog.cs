@@ -12,7 +12,7 @@ namespace ClientPlugin.GUI
 
     public class MyPluginConfigDialog : MyGuiScreenBase
     {
-        private const string Caption = "PluginTemplate Configuration";
+        private const string Caption = "FpsUnlocker Configuration";
         public override string GetFriendlyName() => "MyPluginConfigDialog";
 
         private MyLayoutTable layoutTable;
@@ -21,6 +21,9 @@ namespace ClientPlugin.GUI
         private MyGuiControlCheckbox enabledCheckbox;
 
         // TODO: Add member variables for your UI controls here
+        private MyGuiControlLabel framerateCapLabel;
+        private MyGuiControlLabel framerateValueLabel;
+        private MyGuiControlSlider framerateSlider;
 
         private MyGuiControlMultilineText infoText;
         private MyGuiControlButton closeButton;
@@ -57,14 +60,20 @@ namespace ClientPlugin.GUI
             CreateCheckbox(out enabledLabel, out enabledCheckbox, config.Enabled, value => config.Enabled = value, "Enabled", "Enables the plugin");
             // TODO: Create your UI controls here
 
+            CreateSlider(out framerateCapLabel, out framerateValueLabel, out framerateSlider, 60f, 500f, true, config.FramerateCap, value => { 
+                    config.FramerateCap = (int)value; 
+                    framerateValueLabel.Text = "" + value;
+                    Plugin.Instance.ChangeFramerateCap(); }
+                , "Framerate Cap", "The Framerate Cap for the game.");
+
             infoText = new MyGuiControlMultilineText
             {
-                Name = "InfoText",
+                Name = "FpsUnlocker",
                 OriginAlign = MyGuiDrawAlignEnum.HORISONTAL_CENTER_AND_VERTICAL_TOP,
                 TextAlign = MyGuiDrawAlignEnum.HORISONTAL_LEFT_AND_VERTICAL_TOP,
                 TextBoxAlign = MyGuiDrawAlignEnum.HORISONTAL_LEFT_AND_VERTICAL_TOP,
                 // TODO: Add 2 short lines of text here if the player needs to know something. Ask for feedback here. Etc.
-                Text = new StringBuilder("\r\nTODO")
+                Text = new StringBuilder("\r\nThis plugin allows you to change the framerate cap\r\non Space Engineers. Valid values are 60fps to 500 fps.\r\n")
             };
 
             closeButton = new MyGuiControlButton(originAlign: MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_CENTER, text: MyTexts.Get(MyCommonTexts.Ok), onButtonClick: OnOk);
@@ -72,6 +81,27 @@ namespace ClientPlugin.GUI
 
         private void OnOk(MyGuiControlButton _) => CloseScreen();
 
+        private void CreateSlider(out MyGuiControlLabel labelControl, out MyGuiControlLabel valueLabel, out MyGuiControlSlider sliderControl, float minValue, float maxValue, bool isIntValue, int defaultValue, Action<float> store, string label, string tooltip)
+        {
+            labelControl = new MyGuiControlLabel
+            {
+                Text = label,
+                OriginAlign = MyGuiDrawAlignEnum.HORISONTAL_CENTER_AND_VERTICAL_TOP
+            };
+
+            valueLabel = new MyGuiControlLabel
+            {
+                Text = ""+defaultValue,
+                OriginAlign = MyGuiDrawAlignEnum.HORISONTAL_CENTER_AND_VERTICAL_TOP
+            };
+
+            sliderControl = new MyGuiControlSlider(minValue: minValue, maxValue: maxValue, intValue: isIntValue, defaultValue: defaultValue, toolTip: tooltip)
+            {
+                OriginAlign = MyGuiDrawAlignEnum.HORISONTAL_CENTER_AND_VERTICAL_TOP,
+                Enabled = true
+            };
+            sliderControl.ValueChanged += cb => store(cb.Value);
+        }
         private void CreateCheckbox(out MyGuiControlLabel labelControl, out MyGuiControlCheckbox checkboxControl, bool value, Action<bool> store, string label, string tooltip)
         {
             labelControl = new MyGuiControlLabel
@@ -92,10 +122,10 @@ namespace ClientPlugin.GUI
         private void LayoutControls()
         {
             var size = Size ?? Vector2.One;
-            layoutTable = new MyLayoutTable(this, -0.3f * size, 0.6f * size);
-            layoutTable.SetColumnWidths(400f, 100f);
+            layoutTable = new MyLayoutTable(this, -0.3f * size, 0.9f * size);
+            layoutTable.SetColumnWidths(200f, 100f, 100f);
             // TODO: Add more row heights here as needed
-            layoutTable.SetRowHeights(90f, /* TODO */ 150f, 60f);
+            layoutTable.SetRowHeights(90f, 60f, 150f, 60f);
 
             var row = 0;
 
@@ -104,6 +134,10 @@ namespace ClientPlugin.GUI
             row++;
 
             // TODO: Layout your UI controls here
+            layoutTable.Add(framerateCapLabel, MyAlignH.Left, MyAlignV.Center, row, 0);
+            layoutTable.Add(framerateValueLabel, MyAlignH.Left, MyAlignV.Center, row, 1);
+            layoutTable.Add(framerateSlider, MyAlignH.Left, MyAlignV.Center, row, 2);
+            row++;
 
             layoutTable.Add(infoText, MyAlignH.Left, MyAlignV.Top, row, 0, colSpan: 2);
             row++;
